@@ -41,7 +41,7 @@
     <% @gossips.each do |gossip| %>
       <div class="col-4 mb-3">
         <div class="card">
-          <img class="card-img-top" alt="Card image cap" src="https://actu.meilleurmobile.com/wp-content/uploads/2015/06/gossip-application.jpg">
+          <img class="card-img-top" alt="Card image cap" src="https://s2.qwant.com/thumbr/0x0/e/8/7cb1afb76d29244037e97664485bb0a59f63b50634b7af2108fb0c96edb4bb/gossip-girl-image.jpg?u=https%3A%2F%2Fstatic.tvtropes.org%2Fpmwiki%2Fpub%2Fimages%2Fgossip-girl-image.jpg&q=0&b=1&p=0&a=1">
           <div class="card-body">
             <h5 class="card-title"><%=gossip.title %></h5>
             <p class="card-text"><%= truncate gossip.content, length: 30 %></p>
