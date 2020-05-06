@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <title>The Gossip Project - Equipe</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="<%= gossips_path %>">The Gossip Project</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="<%=gossips_path %>">Accueil</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%=team_path %>">Equipe</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%=contact_path %>">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <h2 class="text-center my-5">Créer un nouveau potin</h2>
+
+  <!-- Display errors -->
+  <% if @gossip.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+      <ul>
+        <% @gossip.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <%= form_tag url_for(action: 'create'), method: "post" do %>
+        <div class="form-group">
+          <%= label_tag 'Titre :' %>
+          <%= text_field_tag 'title', @gossip.title, {class: 'form-control'} %>
+        </div>
+        <div class="form-group">
+          <%= label_tag 'Contenu :' %>
+          <%= text_area_tag 'content', @gossip.content, {class: 'form-control'} %>
+        </div>
+        <div class="form-group">
+          <%= label_tag 'Auteur :' %>
+          <%= select_tag "user", options_from_collection_for_select(User.all, :id, :full_name), {class: 'form-control', prompt: 'Choisir un utilisateur'} %>
+        </div>
+        <div class="row justify-content-center">
+          <%= submit_tag "Créer le potin", {class: 'btn btn-primary'} %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
