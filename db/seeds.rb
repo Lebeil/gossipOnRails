@@ -20,7 +20,8 @@ end
     description: Faker::Hipster.sentence,
     email: Faker::Internet.email,
     age: rand(16..88),
-    city: City.all.sample
+    city: City.all.sample,
+    password: Faker::Lorem.characters(number: 10)
     )
 end
 
