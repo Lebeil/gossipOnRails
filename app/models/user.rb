@@ -14,6 +14,7 @@ class User < ApplicationRecord
   validates :age,
             numericality: {only_integer: true, greater_than: 18}
 
+
   def full_name
     "#{first_name} #{last_name}"
   end

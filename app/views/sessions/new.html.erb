@@ -1,0 +1,16 @@
+
+<div class="text-center">
+  <p>Login</p>
+  <%= form_tag sessions_path do %>
+    <%= label_tag :email%><br/>
+    <%= text_field_tag :email%><br/>
+    <%= label_tag :password%><br/>
+    <%= password_field_tag :password%><br/>
+    <br>
+    <%= submit_tag "se connecter"%><br/>
+  <%end%>
+  <p>Si tu n'as pas de compte, va sur inscris-toi</p>
+  <%= button_to "Inscris-toi", new_user_path, method: :get%>
+</div>
+
+
