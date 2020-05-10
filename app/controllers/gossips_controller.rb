@@ -1,4 +1,7 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, only: [:create, :show, :new]
+  before_action :authenticate_user_edit, only: [:edit, :update]
+
   # View list of gossips (order most recents first)
   def index
     @gossips = Gossip.all.order("created_at DESC")
